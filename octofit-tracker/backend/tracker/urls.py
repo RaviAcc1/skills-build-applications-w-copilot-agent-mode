@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import UserProfileViewSet, ActivityViewSet, TeamViewSet
+from .views import UserProfileViewSet, ActivityViewSet, TeamViewSet, LeaderboardViewSet, WorkoutViewSet
 
 router = DefaultRouter()
 
@@ -9,8 +9,6 @@ router.register(r'activities', ActivityViewSet)
 router.register(r'teams', TeamViewSet)
 router.register(r'leaderboards', LeaderboardViewSet)
 router.register(r'workouts', WorkoutViewSet)
-
-urlpatterns = [
 
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -28,5 +26,5 @@ def api_root(request, format=None):
 
 urlpatterns = [
     path('', api_root, name='api-root'),
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
 ]
